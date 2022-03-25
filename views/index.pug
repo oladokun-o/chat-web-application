@@ -1,0 +1,180 @@
+extends layout
+
+block content
+	.body.px-0.py-0
+		.container-fluid.p-0.full-height.position-fixed
+			.row.clearfix.full-height
+				.col-lg-12.pl-2.pr-0
+					.card.chat-app.m-0.full-height.position-relative
+						#plist.people-list.full-height.p-0
+							.user-menu
+								.row 
+									.col
+										.avatar.px-2
+											img(src='https://bootdey.com/img/Content/avatar/avatar1.png' alt='avatar')
+									.col-9
+										.input-group
+											.input-group-prepend
+												span.input-group-text
+													i.bi.bi-person
+											input.form-control(type='text' value=user readonly).user-name.text-capitalize
+							ul.list-unstyled.chat-list.mt-0.mb-0.pt-0
+								li.clearfix.active.chat-
+									img(src='/images/icon/team.png' alt='avatar')
+									.about.px-3
+										.name.text-capitalize=groupName
+										.status.text-truncate.d-inline-block(style="max-width: 150px;") 
+											//i.fa-solid.fa-check-double.fa.px-1
+											span.last-user-msg
+										span.span.message-data-time 10:12 AM
+						.chat.full-height.position-relative
+							.chat-header.clearfix.pt-3.pb-0
+								.row
+									.col-lg-6.col-10.d-flex
+										a(href='javascript:void(0);' data-toggle='modal' data-target='#view_info')
+											img(src='/images/icon/team.png' alt='avatar')
+										.chat-about.px-3
+											h6.m-b-0.text-capitalize #{groupName}
+											small.text-muted.text-truncate.d-inline-block(style="max-width: 150px;")
+												.user-list 
+									.col-lg-6.text-right.px-3.px-md-3.col-2
+										button.position-relative.chap-options-btn#chat_options_btn
+											i.fa.fa-ellipsis-v
+											ul.chat-options#chat_options
+												li Admin: #{groupAdmin}
+												li(title="click to copy" onclick="copyCode(this)") Group Code: 
+													span #{id}
+												//li clear messages
+												//li close chat 
+												//li delete chat
+							.chat-history.pl-3.pr-4.m-0
+								ul.m-b-0.chats.px-2
+									span#last-item
+							.chat-message.clearfix.p-3.pl-md-2.pr-md-4.py-md-2#chat_message
+								#data.d-none
+								.text-editor.col-12.px-2.py-0.position-relative
+									.toolbar.text-formatters.px-2.pb-0.pt-2
+										.uploads.d-none
+											.uploads-box
+										.text-btns.col-12.p-0.null.mt-2
+											button.edit-btn(data-action='bold' data-tag-name='b' title='Bold').for-text
+												i.bi.bi-type-bold
+											button.edit-btn.icon.smaller(data-action='italic' data-tag-name='i' title='Italic').for-text
+												i.bi.bi-type-italic
+											span.px-1.text-muted.d-md-inline.d-none |
+											button.edit-btn.icon.smaller(data-action='strikeThrough' data-tag-name='strike' title='Strike through').for-text
+												i.bi.bi-type-strikethrough
+											button.edit-btn.icon.smaller(data-action='createLink' title='Insert Link').link.for-text
+												i.bi.bi-link-45deg
+											span.px-1.text-muted.d-md-inline.d-none |
+											button.edit-btn.icon(data-action='insertOrderedList' data-tag-name='ol' title='Insert ordered list').for-text
+												i.bi.bi-list-ol
+											button.edit-btn.icon(data-action='insertUnorderedList' data-tag-name='ul' title='Insert unordered list').for-text
+												i.bi.bi-list-ul
+											span.px-1.text-muted.d-md-inline.d-none |
+											button.edit-btn.icon(data-action='indent' title='Indent').for-text
+												i.bi.bi-blockquote-right
+											span.px-1.text-muted.d-md-inline.d-none |
+											button.edit-btn.icon(data-action='code-snippet' title='Code Snippet').link.for-text
+													i.bi.bi-code-slash
+											button.edit-btn.icon(data-action='code-block' title='Code Block')
+													i.bi.bi-code-square
+									.content-area.pb-0.pt-2.pr-1.null
+										.visuell-view.textarea(contenteditable='')#text
+										.html.position-relative.col-12.d-none
+											textarea(id="editing" spellcheck="false" oninput="update(this.value); sync_scroll(this);" onscroll="sync_scroll(this);" onkeydown="check_tab(this, event);")
+											pre#highlighting(aria-hidden='true')
+												code(class="language-html" id="highlighting-content")
+									.col-12.text-edit.position-relative.null
+											input(type="file" id="fileUpload").d-none
+											button(type="button" title="File upload | Ctrl+U").upload.for-text 
+												i.bi.bi-plus
+											span.px-1.text-muted.d-md-inline.d-none |
+											button(type="button" title="Emoji").emoji.for-text 
+												i.bi.bi-emoji-smile
+											button(type="button" title="Mention someone").at.for-text 
+												i.bi.bi-at
+											button(type="button" title="Toggle Formatting").d-inline.text-format.for-text
+												i.bi.bi-type
+											button.null.submit.active.float-right(type="submit" title="Send").position-absolute
+												div
+													i.bi.bi-send-fill
+								#con.d-none
+									.emojiPicker
+										.emojis
+											.emojiFrame
+												span.emoji 😜
+											.emojiFrame
+												span.emoji 😁
+											.emojiFrame
+												span.emoji 😂
+											.emojiFrame
+												span.emoji 😃
+											.emojiFrame
+												span.emoji 😄
+											.emojiFrame
+												span.emoji 😅
+											.emojiFrame
+												span.emoji 😆
+											.emojiFrame
+												span.emoji 😇
+											.emojiFrame
+												span.emoji 😉
+											.emojiFrame
+												span.emoji 😊
+											.emojiFrame
+												span.emoji 😋
+											.emojiFrame
+												span.emoji 😌
+											.emojiFrame
+												span.emoji 😍
+											.emojiFrame
+												span.emoji 😎
+											.emojiFrame
+												span.emoji 😏
+											.emojiFrame
+												span.emoji 😐
+											.emojiFrame
+												span.emoji 😑
+											.emojiFrame
+												span.emoji 😒
+											.emojiFrame
+												span.emoji 😓
+											.emojiFrame
+												span.emoji 😔
+											.emojiFrame
+												span.emoji 😕
+											.emojiFrame
+												span.emoji 😖
+											.emojiFrame
+												span.emoji 😗
+											.emojiFrame
+												span.emoji 😘
+											.emojiFrame
+												span.emoji 😙
+											.emojiFrame
+												span.emoji 😚
+											.emojiFrame
+												span.emoji 😛
+											.emojiFrame
+												span.emoji 😢
+
+	#hyperlinkModal.col-12.d-none
+		.contn
+			.hyperlink-void.close-link
+			form.col-12.col-md-8
+				.modal-content.p-2.p-md-4
+					.modal-header
+						h5#exampleModalLiveLabel.modal-title Add Link
+						button.btn-close(type='button' aria-label='Close').close-link
+							i.bi.bi-x-lg
+					.modal-body
+						label(for="#link") Link
+						.input-group.mb-4
+							input.form-control#linkValue(type='text', name="link", aria-label='link', required)
+					.modal-footer
+						button(type="button").btn.btn-secondary-.close-link Close
+						button.btn.btn-primary-.done Save changes
+	script(src="/javascripts/mention.js")
+	script(src="/javascripts/editor.js")
+

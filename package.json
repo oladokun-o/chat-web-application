@@ -1,0 +1,46 @@
+{
+  "name": "chat-web-application",
+  "version": "1.0.0",
+  "description": "messenger chat application",
+  "main": "index.js",
+  "scripts": {
+    "start server": "node server/index.js",
+    "start dev server": "nodemon server/index.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/honcho-man/chat-web-application.git"
+  },
+  "keywords": [
+    "chat",
+    "webapp"
+  ],
+  "author": "oladokun",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/honcho-man/chat-web-application/issues"
+  },
+  "homepage": "https://github.com/honcho-man/chat-web-application#readme",
+  "dependencies": {
+    "@popperjs/core": "^2.10.2",
+    "compression": "^1.7.4",
+    "cookie-parser": "^1.4.5",
+    "cors": "^2.8.5",
+    "debug": "^4.3.1",
+    "dotenv": "^10.0.0",
+    "express": "^4.17.1",
+    "fs": "^0.0.1-security",
+    "http": "^0.0.1-security",
+    "http-errors": "^1.8.0",
+    "jquery": "^3.6.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongoose": "^5.12.12",
+    "morgan": "^1.10.0",
+    "nodemailer": "^6.6.1",
+    "nodemon": "^2.0.15",
+    "path": "^0.12.7",
+    "pug": "^3.0.2",
+    "socket.io": "^4.4.1",
+    "uuid": "^8.3.2"
+  }
+}
