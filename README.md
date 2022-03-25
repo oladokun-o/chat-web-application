@@ -17,23 +17,23 @@ $ npm install
 ```
 ## Deploy & Run
 
-If mongodb is available locally, create a new database with any name, then create a new .env file in the root directory of the application folder and add the following details:
+If mongodb is available locally, create a new database with any name, then create a new .env file in the root directory of the application folder and add the following environment details:
     
     PORT=3500 or any port numer
     MONGODB_URI_DEV=mongodb://localhost:27017/database-name goes here!
 
 Then edit the index.js file in the config folder and set application mode to development (i.e `return config[env] || config.development`)
 
-Or if mongodb is available locally, a cluster has been provided, create a new .env file with the following details
+Or if mongodb is not available locally, a cluster has been provided, create a new .env file with the following environment details
 
     PORT=3500 or any port numer
-    MONGODB_URI=mongodb+srv://users:iamawesome!@pro-finders.kv9fa.mongodb.net/oprofinder-blog?retryWrites=true&w=majority
+    MONGODB_URI=mongodb+srv://users:iamawesome!@pro-finders.kv9fa.mongodb.net/chat-app?retryWrites=true&w=majority
 
 Then edit the index.js file in the config folder and set application mode to production (i.e `return config[env] || config.production`)
 
-run the command to start ther server:
+run the command to start the server:
 ```
-$ npm run "start server"
+$ npm start
 
 ```
 open the link in your browser:
