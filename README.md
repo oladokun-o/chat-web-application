@@ -1,6 +1,8 @@
 # chat-web-application
 Chat web application where two or more users can chat with each other in a group.
 
+## <a href="https://chat-web--app.herokuapp.com/">DEMO</a>
+
 Users can create, join and chat in groups
 Chat features:
 Text format options
