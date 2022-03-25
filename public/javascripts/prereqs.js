@@ -77,9 +77,9 @@ function addMessages(message) {
       </div>
      </li>
     `).insertBefore($('#last-item'))
-  $('.about .last-user-msg').html(`<span class="text-capitalize">${$('.chat-history li:last-child .message-data').html()}</span>: 
-  ${$('.chat-history li:last-child .my-message').html()}`)
-  $('.about .message-data-time').html(`${$('.chat-history li:last-child .message-data-time').html()}`);
+  $('.about .last-user-msg').html(`<span class="text-capitalize">${message.user}</span>: 
+  ${message.message}`)
+  $('.about .message-data-time').html(`${message.time}`);
   scrollDownChats();
 }
 

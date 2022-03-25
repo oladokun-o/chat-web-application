@@ -176,8 +176,8 @@ function newMessage(e) {
         </div>
        </li>
       `).insertBefore($('#last-item'));
-    $('.about .last-user-msg').html(`<span class="text-capitalize">${$('.chat-history li:last-child .message-data').text()} </span>:  ${$('.chat-history li:last-child .my-message').find('span').text()}`)
-    $('.about .message-data-time').html(`${$('.chat-history li:last-child .message-data-time').text()}`);
+    $('.about .last-user-msg').html(`<span class="text-capitalize">${e.msg.user} </span>:  ${e.msg.message}`)
+    $('.about .message-data-time').html(`${e.msg.time}`);
     scrollDownChats();
     }
 }
