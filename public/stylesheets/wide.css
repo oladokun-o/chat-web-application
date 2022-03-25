@@ -1,0 +1,23 @@
+@media only screen and (min-width: 768px) {
+    .post-wrap .text-truncate {
+        max-width: 300px;
+    }
+    .primary-btn {
+        width: 25%;
+    }
+}
+
+@media only screen and (min-width: 1200px) {
+    .post-wrap .text-truncate {
+        max-width: 450px;
+    }
+    .post-wrap .text-truncate.post {
+        max-width: 450px;
+        font-size: x-large;
+    }
+    .lead.post {
+        max-height: 70px;
+        max-width: 450px;
+    }
+
+}

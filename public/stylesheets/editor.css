@@ -1,0 +1,233 @@
+/* WYSIWYG Editor */
+.text-editor {
+    width: 40rem;
+    height: auto;
+    border-top: 6px solid #4a4a4a;
+    border-radius: 3px;
+}
+.text-editor .toolbar .line .box .editor-btn.has-submenu {
+    width: 20px;
+    padding: 0 10px;
+}
+.text-editor .toolbar .line .box .editor-btn.has-submenu::after {
+  content: "";
+  width: 6px;
+  height: 6px;
+  position: absolute;
+  background-image: url(https://img.icons8.com/ios-glyphs/30/000000/chevron-down.png);
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
+  right: 4px;
+}
+.text-editor .toolbar .line .box .editor-btn.has-submenu .submenu {
+  display: none;
+  position: absolute;
+  top: 34px;
+  left: -1px;
+  z-index: 10;
+  background-color: #fff;
+  border: 1px solid #b5b5b5;
+  border-top: none;
+}
+.text-editor .toolbar .line .box .editor-btn.has-submenu .submenu .btn {
+  width: 39px;
+}
+.text-editor .toolbar .line .box .editor-btn.has-submenu .submenu:hover {
+  display: block;
+}
+.text-editor .toolbar .line .box .editor-btn.has-submenu:hover .submenu {
+  display: block;
+}
+.text-editor .content-area {
+  padding: 15px 12px;
+  line-height: 1.5;
+}
+.text-editor .content-area .visuell-view {
+  outline: none;
+  color: white !important;
+}
+.text-editor .content-area .visuell-view p {
+  margin: 12px 0;
+}
+.text-editor .content-area .html-view {
+  outline: none;
+  display: none;
+  width: 100%;
+  height: 200px;
+  border: none;
+  resize: none;
+}
+
+.html {
+  height: 150px;
+  background: #181920;
+  border-radius: 5px;
+  border: 1px solid #ffffff44;
+  padding: 5px;
+  margin-top: 2px;
+  margin-bottom: 2px;
+}
+
+#editing, #highlighting {
+  width: 100%;
+  height: 100%;
+}
+#editing, #highlighting, #highlighting * {
+  font-family: monospace;
+}
+
+#editing {
+  color: white;
+  background: transparent;
+  caret-color: white;
+  border: none;
+  outline: none !important;
+  padding-left: 15px;
+}
+
+#editing, #highlighting {
+  overflow-x: hidden;
+  overflow-y: scroll;
+}
+
+#editing::-webkit-scrollbar, #highlighting::-webkit-scrollbar {
+  display: none;
+}
+
+#editing {
+  resize: none;
+}
+
+
+#editing, #highlighting {
+  /* In the same place */
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+
+#editing {
+  z-index: 1;
+}
+#highlighting {
+  z-index: 0;
+}
+
+
+code[class*="language-"],
+pre[class*="language-"] {
+	font-family: Consolas, Monaco, 'Andale Mono', 'Ubuntu Mono', monospace;
+	font-size: 1em;
+	text-align: left;
+	white-space: pre;
+	word-spacing: normal;
+	word-break: normal;
+	word-wrap: normal;
+	line-height: 1.5;
+
+	-moz-tab-size: 4;
+	-o-tab-size: 4;
+	tab-size: 4;
+
+	-webkit-hyphens: none;
+	-moz-hyphens: none;
+	-ms-hyphens: none;
+	hyphens: none;
+
+  color: transparent;
+}
+
+/* Code blocks */
+pre[class*="language-"] {
+	padding: .4em .8em;
+	margin: .5em 0;
+	overflow: auto;
+}
+
+pre span {
+  background: none !important;
+  color: transparent !important;
+}
+
+
+/* Inline code */
+:not(pre) > code[class*="language-"] {
+	padding: .2em;
+	border-radius: .3em;
+	box-shadow: none;
+	white-space: normal;
+}
+
+/* Plugin styles: Diff Highlight */
+pre.diff-highlight.diff-highlight > code .token.deleted:not(.prefix),
+pre > code.diff-highlight.diff-highlight .token.deleted:not(.prefix) {
+	display: inline;
+}
+
+pre.diff-highlight.diff-highlight > code .token.inserted:not(.prefix),
+pre > code.diff-highlight.diff-highlight .token.inserted:not(.prefix) {
+	display: inline;
+}
+
+/* End of prism.js syntax highlighting*/
+
+
+#con,#data {
+  position: absolute;
+  bottom: 150px;
+}
+
+.emojiPicker {
+  width: 296px;
+  border: 1px solid #ffffff2f;
+  box-shadow: 0 0 15px black;
+  border-radius: 10px;
+  background-color: #181920;
+  padding: 0 !important;
+  overflow: hidden;
+}
+
+.emojis {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.emojiFrame {
+  box-sizing: content-box;
+  user-select: none;
+  text-align: center;
+  cursor: pointer;
+  width: 30px;
+  font-size: 21px;
+  padding: 3px;
+  margin: 3px;
+  background-color: transparent;
+  transform: scale(0.9);
+  border-radius: 5px;
+  transition: background-color 0.2s, transform 0.1s;
+}
+
+.emojiFrame:hover {
+  background-color: #313241;
+}
+
+.emojiFrame:active {
+  background-color: #313241;
+  transform: scale(0.95);
+}
+
+#data {
+  width: 100px;
+  height: 50px;
+  position: absolute;
+  top: -32px;
+  border: 1px solid #ffffff2f;
+  box-shadow: 0 0 15px black;
+  border-radius: 10px;
+  background-color: #181920;
+  padding: 0 !important;
+  left: 64px;
+}

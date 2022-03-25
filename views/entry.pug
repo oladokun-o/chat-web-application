@@ -1,0 +1,78 @@
+extends layout
+
+block content
+	.body.px-0.py-0.col-12.en.position-relative
+		.col-12.text-center.home
+			h1.px-2 Create or Join a Group Chat
+			.col-12.d-flex.justify-content-center.align-items-center.p-0
+				img(src="/images/icon/chat.png", alt="")
+			.col-12.d-flex.justify-content-center.align-items-center.p-0
+				.col-6
+					.row 
+						.col-md-6.col-12.text-right 
+							button.create-btn Create
+						.col-md-6.col-12.text-left 
+							button.join-btn Join 
+		.col-12.join.full-height.p-md-5.p-3.d-none
+			.col-12.d-flex.justify-content-center.align-items-center.p-0.full-height.position-relative
+				.col-md-10.col-lg-6.col-12.full-height.py-3.join-body
+					.col-12.header.p-0.position-relative 
+						a.float-left(onclick="cancel('join')").cancel Cancel 
+						p.text-center Join a Group
+					.col-12.full-height.pb-5
+						.col-12.d-flex.justify-content-center.align-items-center.p-0.pb-5.full-height
+							.col-md-8
+								form
+									.input-group.mb-4.write
+										span#basic-addon1.input-group-text 
+											i.bi.bi-people-fill
+										input.form-control#group_id(type='text', placeholder='Group ID', name="group_id", aria-label='groud_id', aria-describedby='basic-addon1' required)
+									.input-group.mb-4.write
+										span#basic-addon2.input-group-text 
+											i.bi.bi-person-fill
+										input.form-control#username1(type='text', placeholder='Join with a personal name', name="name", aria-label='name', aria-describedby='basic-addon2' required)
+									.input-group.write
+										button(type="submit").submit-join Join
+									.col-12.read.d-none.px-0
+										.input-group.mb-4
+											input.form-control#groupName.text-center(type='text', name="group_code", aria-label='group_code', aria-describedby='basic-addon6' readonly)
+											span#basic-addon6.input-group-text.clone 
+												small
+													span#group_no
+													i.bi.bi-people-fill.pl-2
+										input(readonly type="text")#join_group_code.d-none
+										.col-12.px-0
+											button(type="button" onclick="enterGroup(this)").enter-btn 
+												span Join Group
+												i.bi.bi-box-arrow-in-right.pl-2
+		.col-12.create.full-height.p-md-5.p-3.d-none 
+			.col-12.d-flex.justify-content-center.align-items-center.p-0.full-height
+				.col-md-10.col-lg-6.col-12.full-height.py-3.create-body
+					.col-12.header.p-0.position-relative 
+						a.float-left(onclick="cancel('create')").cancel Cancel 
+						p.text-center Create a Group
+					.col-12.full-height.pb-5
+						.col-12.d-flex.justify-content-center.align-items-center.p-0.pb-5.full-height
+							.col-md-8
+								form
+									.input-group.mb-4.write
+										span#basic-addon3.input-group-text 
+											i.bi.bi-people-fill
+										input.form-control#group_name(type='text', placeholder='Group Name', name="group_name", aria-label='groud_name', aria-describedby='basic-addon3' required)
+									.input-group.mb-4.write
+										span#basic-addon4.input-group-text 
+											i.bi.bi-person-fill
+										input.form-control#username2(type='text', placeholder='Enter your name', name="name", aria-label='name', aria-describedby='basic-addon4' required)
+									.col-12.read.d-none.px-0
+										.input-group.mb-4
+											input.form-control#groupCode.text-center(type='text', name="group_code", aria-label='group_code', aria-describedby='basic-addon5' readonly)
+											span#basic-addon5.input-group-text.clone(onclick="copyToClipboard('#group_code')") 
+												small 
+													| Share code
+													i.fa.fa-clone.pl-2
+										.col-12.px-0
+											button(type="button" onclick="enterGroup(this)").enter-btn 
+												span Enter Group
+												i.bi.bi-box-arrow-in-right.pl-2
+									.input-group.write
+										button(type="submit").submit-create Create Group Chat
