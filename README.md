@@ -11,7 +11,7 @@ file upload
 
 ## Installation
 
-Clone repository
+Clone repository into a newly created folder
 
 ```
 git clone https://github.com/honcho-man/chat-web-application
