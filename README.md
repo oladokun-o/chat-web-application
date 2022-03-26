@@ -11,12 +11,19 @@ file upload
 
 ## Installation
 
-Clone repository and install required packages
+Clone repository
 
 ```
-$ git clone https://github.com/honcho-man/chat-web-application && npm install 
+git clone https://github.com/honcho-man/chat-web-application
 
 ```
+install required packages
+ 
+```
+npm install 
+
+```
+
 ## Deploy & Run
 
 If mongodb is available locally, create a new database with any name, then create a new .env file in the root directory of the application folder and add the following environment details:
