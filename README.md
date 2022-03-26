@@ -14,7 +14,7 @@ file upload
 Clone repository and install required packages
 
 ```
-$ npm install 
+$ git clone https://github.com/honcho-man/chat-web-application && npm install 
 
 ```
 ## Deploy & Run
