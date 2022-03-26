@@ -292,13 +292,14 @@ function addParagraphTag(evt) {
   }
 }
 
-var uploadSection = $('.uploads-box');
+var uploadSection = $('.toolbar .uploads-box');
 $('.upload').on('click', function() {
   $('#fileUpload').trigger('click');
 })
 
 function cancelFile(elem) {
   $(`#${elem.getAttribute('for')}`).remove();
+  if (!$('.submit').hasClass('null') && $('#text').text().length == 0) $('.submit').addClass('null')
 }
 
 $('input[type="file"]').on('change', function(e) {
@@ -322,6 +323,7 @@ $('input[type="file"]').on('change', function(e) {
     }, 1000);
   } else {
     uploadSection.append(fil)
+    if ($('.submit').hasClass('null')) $('.submit').removeClass('null')
   }
 });
 

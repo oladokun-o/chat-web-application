@@ -128,8 +128,8 @@ $('.submit').on('click', function() {
     let uploads = $('.uploads');
     if (uploads.find('span').length > 0) {
         uploads.find('button').remove();uploads.find('span').removeAttr('id');
-        var files = uploads.html()//.replace(new RegExp("&", "g"), "&amp;").replace(new RegExp("<", "g"), "&lt;");
-        $('.visuell-view').append(files);
+        var loads = uploads.html()//.replace(new RegExp("&", "g"), "&amp;").replace(new RegExp("<", "g"), "&lt;");
+        $('.visuell-view').append(loads);
     }
 
     var d = new Date();
@@ -178,6 +178,7 @@ function newMessage(e) {
       `).insertBefore($('#last-item'));
     $('.about .last-user-msg').html(`<span class="text-capitalize">${e.msg.user} </span>:  ${e.msg.message}`)
     $('.about .message-data-time').html(`${e.msg.time}`);
+    $('.last-user-msg').find('.uploads-box').html('🔗')
     scrollDownChats();
     }
 }

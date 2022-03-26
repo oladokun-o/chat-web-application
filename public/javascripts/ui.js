@@ -71,7 +71,7 @@ function cancel(target) {
   $('.write').find('input').val('');
   $('.write').fadeIn().removeClass('null').attr('disabled', false)                                            
   $('.submit-join').html('Join Group');                              
-  $('.submit-create').html('Create Group Chat'); 
+  $('.submit-create').html('Create Group Chat');   
 }
 
 function copyToClipboard(element) {
@@ -201,35 +201,54 @@ function printCaretPosition(){
 }
 
 function linkUp(link) { 
-  let url = link
+  if (link) {
+    let url = link
   var linkTag = document.createElement('a');
   let span = document.createElement('span')
   let fileId = ID()
-  linkTag.classList.add('text-truncate', 'd-inline-block', 'link')
-  var domain = url.replace('http://','').replace('https://','').split(/[/?#]/)[0];
-  domain = domain.split('.').slice(0, -1).join('.');
+  linkTag.classList.add('text-truncate', 'link')
+  var domain = urlify(url)
   linkTag.setAttribute('link', fileId)
-  linkTag.setAttribute('href', url)
-  linkTag.innerHTML = domain;
-  span.setAttribute('id', fileId)
-  span.append(linkTag)
-  fade_in('.uploads')
-  uploadSection.append(span); 
-  uploadSection.find('[link="'+fileId+'"]').prepend('<img src="https://www.google.com/s2/favicons?domain=' + url + '">'); 
+  
+  //get website details 
+  $.ajax({
+    url: "http://api.linkpreview.net",
+    dataType: 'jsonp',
+    data: {q: url, key: 'e8d061dfbb8575fd36728a1d22d14ab9'},
+    success: function (data) {
+      linkTag.setAttribute('href', data.url)
+      let anchordiv = document.createElement('div')
+      anchordiv.classList.add('upload-link')
+      //anchordiv.innerHTML = domain;
+      linkTag.append(anchordiv)
+      span.setAttribute('id', fileId) 
+      span.classList.add('link-span') 
+      span.append(linkTag)
+      fade_in('.uploads')
+      uploadSection.append(span); 
+      uploadSection.find('[link="'+fileId+'"]').prepend(`<div class="upload-img"><img src="${data.image}"></div>`);   
+      uploadSection.find('.upload-link').html(`
+        <h6 class="text-truncate d-inline-block">${data.title}</h6>
+        <p class="text-truncate d-inline-block">${data.description}</p>
+        <a class="text-truncate d-inline-block linked" href="${data.url}">${urlify(data.url)}</a>
+      `)
+    }
+  });
   var button = $('<button class="" for='+ fileId +' onclick="cancelLink(this)">');
   button.append('<i class="bi bi-x">');
   uploadSection.find('[link="'+fileId+'"]').after(button)
+  if ($('.submit').hasClass('null')) $('.submit').removeClass('null')
+  }
 }
 
 function urlify(text) {
-  var urlRegex = /(https?\:\/\/)?([^\.\s]+)?[^\.\s]+\.[^\s]+/gi;
-  return text.match(urlRegex, function(url) {    
-    return url;
-  })
+  var urlRegex = /(https?:\/\/[^\s]+)/g;
+  return text.match(urlRegex);
 }
 
 function cancelLink(elem) {
   $(`#${elem.getAttribute('for')}`).remove();
+  if (!$('.submit').hasClass('null') && $('#text').text().length == 0) $('.submit').addClass('null')
 }
 
 $('.text-format').on('click', function() {
