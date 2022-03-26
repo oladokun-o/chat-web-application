@@ -11,7 +11,7 @@ file upload
 
 ## Installation
 
-Install required packages
+Clone repository and install required packages
 
 ```
 $ npm install 
