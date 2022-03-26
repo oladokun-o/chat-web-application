@@ -17,7 +17,7 @@ Clone repository into a newly created folder
 git clone https://github.com/honcho-man/chat-web-application
 
 ```
-install required packages
+Run the command to install required packages
  
 ```
 npm install 
