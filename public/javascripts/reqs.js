@@ -178,7 +178,7 @@ function newMessage(e) {
       `).insertBefore($('#last-item'));
     $('.about .last-user-msg').html(`<span class="text-capitalize">${e.msg.user} </span>:  ${e.msg.message}`)
     $('.about .message-data-time').html(`${e.msg.time}`);
-    $('.last-user-msg').find('.uploads-box').html('🔗')
+    $('.last-user-msg').find('.uploads-box').html('📎')
     scrollDownChats();
     }
 }
