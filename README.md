@@ -42,7 +42,7 @@ Then edit the index.js file in the config folder and set application mode to pro
 
 run the command to start the server:
 ```
-$ npm start
+npm start
 
 ```
 open the link in your browser:
