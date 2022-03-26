@@ -80,7 +80,7 @@ function addMessages(message) {
   $('.about .last-user-msg').html(`<span class="text-capitalize">${message.user}</span>: 
   ${message.message}`)
   $('.about .message-data-time').html(`${message.time}`);
-  $('.last-user-msg').find('.uploads-box').html('🔗')
+  $('.last-user-msg').find('.uploads-box').html('📎')
   scrollDownChats();
 }
 
