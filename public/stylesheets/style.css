@@ -382,6 +382,14 @@ button {
     list-style-position: inside;
 }
 
+.chat .chat-history ul li ul li{
+    list-style-type: disc;
+}
+
+.chat .chat-history ul li li span {
+    background: none;
+}
+
 .chat .chat-history ul li ol,
 .chat .chat-history ul li ul { 
     padding: 0;
