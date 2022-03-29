@@ -374,7 +374,7 @@ button {
 
 .chat .chat-history ul li {
     list-style: none;
-    margin-bottom: 15px;    
+    margin-bottom: 50px;    
 }
 
 .chat .chat-history ul li li {
@@ -651,7 +651,7 @@ button {
     .chat-app .chat-history {
         overflow-x: auto;
         padding-top: 100px !important;
-        padding-bottom: 160px !important;            
+        padding-bottom: 170px !important;            
         height: 100vh !important;
     }
     .chat .chat-message {
