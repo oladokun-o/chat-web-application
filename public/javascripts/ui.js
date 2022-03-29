@@ -233,11 +233,11 @@ function linkUp(link) {
         <p class="text-truncate d-inline-block">${data.description}</p>
         <a class="text-truncate d-inline-block linked" href="${data.url}">${urlify(data.url)}</a>
       `)
-    }
-  });
-  var button = $('<button class="" for='+ fileId +' onclick="cancelLink(this)">');
+      var button = $('<button class="" for='+ fileId +' onclick="cancelLink(this)">');
   button.append('<i class="bi bi-x">');
   uploadSection.find('[link="'+fileId+'"]').after(button)
+    }
+  });  
   if ($('.submit').hasClass('null')) $('.submit').removeClass('null')
   }
 }

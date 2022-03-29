@@ -14,5 +14,5 @@ const config = {
 
 exports.get = function get(env) {
     //set application mode
-    return config[env] || config.production
+    return config[env] || config.development
 }
