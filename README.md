@@ -11,12 +11,19 @@ file upload
 
 ## Installation
 
-Install required packages
+Clone repository into a newly created folder
 
 ```
-$ npm install 
+git clone https://github.com/honcho-man/chat-web-application
 
 ```
+Run the command to install required packages
+ 
+```
+npm install 
+
+```
+
 ## Deploy & Run
 
 If mongodb is available locally, create a new database with any name, then create a new .env file in the root directory of the application folder and add the following environment details:
@@ -35,7 +42,7 @@ Then edit the index.js file in the config folder and set application mode to pro
 
 run the command to start the server:
 ```
-$ npm start
+npm start
 
 ```
 open the link in your browser:
