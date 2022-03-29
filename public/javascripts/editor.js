@@ -407,3 +407,11 @@ function closeImagePreview() {
 function exitChat() {
   window.location = '/'
 }
+
+$('#editing').on('keypress, keydown', function() {
+  if ($(this).val().length > 0) {
+    $('.submit').removeClass('null')
+  } else if ($(this).val().length == 0) {
+    $('.submit').addClass('null')
+  }
+})

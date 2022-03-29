@@ -43,10 +43,10 @@ jQuery(function() {
           return ('<li>' + value + '</li>');
       })
       let list = expHtml.join('');
-      $('.user-list').append(list);
-      getMessages();
+      $('.user-list').append(list);      
   })
   }
+  getMessages();
   //notice group on new user 
   if (newuser) {
     pingNotice(newuser, groupid)

@@ -124,6 +124,12 @@ var socket = io();
 
 //send message
 $('.submit').on('click', function() {
+    if ($('#highlighting-content').text().length > 0) {
+        $('.visuell-view').text($('#highlighting-content').text())
+        fade_out('.html')
+        fade_in('.visuell-view')
+    }    
+
     //uploads
     if (!$('#con').hasClass('d-none')) fade_out('#con');$('.for-text').removeClass('null')
     let uploads = $('.uploads');
@@ -151,7 +157,8 @@ $('.submit').on('click', function() {
         success: function (response) {                    
             $('.uploads span').remove();
             $('.visuell-view').html('');            
-            $('.submit').find('div').html('<i class="bi bi-send-fill"></i>');  
+            $('#editing, #highlighting-content').html('');
+            $('.submit').find('div').html('<i class="bi bi-send-fill"></i>');
         },
         error: function(response) {
             if (response.statusText) {
