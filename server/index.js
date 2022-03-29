@@ -11,7 +11,7 @@ const compression = require('compression');
 const db = require('../config/index').get(process.env.NODE_ENV);
 const cors = require('cors')
 var app = express();
-app.use(cors())
+app.use(cors());
 app.use(compression());
 
 app.use(bodyParser.json({ limit: '500mb' }));

@@ -651,7 +651,7 @@ button {
     .chat-app .chat-history {
         overflow-x: auto;
         padding-top: 100px !important;
-        padding-bottom: 150px !important;            
+        padding-bottom: 160px !important;            
         height: 100vh !important;
     }
     .chat .chat-message {
