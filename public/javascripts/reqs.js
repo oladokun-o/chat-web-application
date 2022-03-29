@@ -136,7 +136,7 @@ $('.submit').on('click', function() {
     var d = new Date();
     var currentTime = d.toLocaleTimeString();
     var msg = $('.visuell-view').html() 
-
+    $('.submit').addClass('null').find('div').html('<i class="fa fa-spinner fa-spin"></i>'); 
     var message = {
         user: $('.user-name').val(),
         message: msg,
@@ -151,6 +151,7 @@ $('.submit').on('click', function() {
         success: function (response) {                    
             $('.uploads span').remove();
             $('.visuell-view').html('');            
+            $('.submit').find('div').html('<i class="bi bi-send-fill"></i>');  
         },
         error: function(response) {
             if (response.statusText) {
@@ -158,7 +159,7 @@ $('.submit').on('click', function() {
             } else {
                 $('.error').addClass('d-flex fade-in').removeClass('d-none fade-out');$('.error-msg').html(response)
             }
-            
+            $('.submit').find('div').html('<i class="bi bi-send-fill"></i>');  
             setTimeout(() => {
                 $('.write').removeClass('null').attr('disabled', false)                                       
                 $('.submit-join').html('Join Group'); 
@@ -186,6 +187,7 @@ function newMessage(e) {
     $('.about .message-data-time').html(`${e.msg.time}`);
     $('.last-user-msg').find('.uploads-box').html('📎')
     scrollDownChats();
+    $('.chat-history .uploads-box img').on('click', previewImage)
     }
 }
 socket.on('message', newMessage);

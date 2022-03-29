@@ -1114,3 +1114,26 @@ span.ripple {
     z-index: 1;
     box-shadow: 0 0 5px rgba(0, 0, 0, 0.658);
 }
+
+.msg-loader {
+    position: absolute;
+    width: 100%;
+    top: 60px;
+    display: flex;
+    z-index: 1;
+    right: 0;
+    justify-content: center;
+}
+
+.msg-loader div {
+    display: flex;
+    justify-content: center;
+    width: 45px;
+    height: 45px;
+    align-items: center;
+    font-size: 30px;
+    color: white;
+    background: #1f2029;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #09090970;
+}

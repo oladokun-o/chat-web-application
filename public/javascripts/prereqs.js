@@ -62,6 +62,7 @@ function getMessages() {
         id: groupid
     }
     }).done(function( response ) {     
+        $('.msg-loader').fadeOut();
         var msgs = response[0].messages;
         msgs.forEach(addMessages)
             
