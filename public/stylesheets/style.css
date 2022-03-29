@@ -353,12 +353,13 @@ button {
 
 .chat .chat-history {
     padding: 20px;
-    height: 100vh;
     background: #181920;
     background-size: cover;
     background-position: bottom;
     background-repeat: no-repeat;
     font-family: 'Poppins light';
+    height: 90vh;
+    padding-bottom: 110px;
 }
 
 .chat .chat-history ul {
@@ -489,6 +490,7 @@ button {
     position: absolute;
     bottom: 0;
     left: 0;
+    z-index: 1;
     width: 100%;
     background: #1f2029;    
     display: flex;
@@ -649,7 +651,8 @@ button {
     .chat-app .chat-history {
         overflow-x: auto;
         padding-top: 100px !important;
-        padding-bottom: 142px !important;
+        padding-bottom: 150px !important;            
+        height: 100vh !important;
     }
     .chat .chat-message {
         position: fixed;
@@ -674,8 +677,8 @@ button {
         height: 650px;
         overflow-x: auto
     }
-    .chat-app .chat-history {
-        height: 600px;
+    .chat-app .chat-history {            
+        height: 90vh;
         overflow-x: auto;
         padding-bottom: 110px !important;
     }
@@ -687,7 +690,8 @@ button {
         overflow-x: auto
     }
     .chat-app .chat-history {
-        overflow-x: auto
+        overflow-x: auto;            
+        height: 90vh;
     }
 }
 
