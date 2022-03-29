@@ -23,6 +23,7 @@
   "homepage": "https://github.com/honcho-man/chat-web-application#readme",
   "dependencies": {
     "@popperjs/core": "^2.10.2",
+    "body-parser": "^1.19.2",
     "compression": "^1.7.4",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",

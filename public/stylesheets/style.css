@@ -353,12 +353,11 @@ button {
 
 .chat .chat-history {
     padding: 20px;
-    height: calc(100vh - 160px);
+    height: 100vh;
     background: #181920;
     background-size: cover;
     background-position: bottom;
     background-repeat: no-repeat;
-    padding-bottom: 100px !important;
     font-family: 'Poppins light';
 }
 
@@ -632,6 +631,10 @@ button {
         left: -400px;
         display: none
     }
+    .chat-options {
+        right: 0;
+        margin: 15px;
+    }
     .chat-app .people-list.open {
         left: 0
     }
@@ -644,10 +647,9 @@ button {
         position: fixed;
     }
     .chat-app .chat-history {
-        height: calc(100vh - 165px);
         overflow-x: auto;
-        padding-top: 130px !important;
-        padding-bottom: 5px !important;
+        padding-top: 100px !important;
+        padding-bottom: 142px !important;
     }
     .chat .chat-message {
         position: fixed;
@@ -675,7 +677,7 @@ button {
     .chat-app .chat-history {
         height: 600px;
         overflow-x: auto;
-        padding-bottom: 150px !important;
+        padding-bottom: 110px !important;
     }
 }
 
@@ -685,7 +687,6 @@ button {
         overflow-x: auto
     }
     .chat-app .chat-history {
-        height: calc(100vh - 160px);
         overflow-x: auto
     }
 }
@@ -849,7 +850,7 @@ span.ripple {
 
 .uploads {
     width: 100%;
-    max-height: 70px;
+    max-height: fit-content;
     padding-left: 10px;
 }
 
@@ -975,16 +976,22 @@ span.ripple {
 
 .text-editor .uploads-box .link-span h6,
 .text-editor .uploads-box .link-span p,
-.text-editor .uploads-box .link-span a  {
+.text-editor .uploads-box .link-span a,
+.chat-history ul li .uploads-box .link-span h6,
+.chat-history ul li .uploads-box .link-span p,
+.chat-history ul li .uploads-box .link-span a  {
     margin: 0;
 }
 
-.text-editor .uploads-box .link-span h6 {
+.text-editor .uploads-box .link-span h6,
+.chat-history ul li .uploads-box .link-span h6 {
     color: white !important;
 }
 
 .text-editor .uploads-box .link-span a,
-.text-editor .uploads-box .link-span p {
+.text-editor .uploads-box .link-span p,
+.chat-history ul li .uploads-box .link-span a,
+.chat-history ul li .uploads-box .link-span p {
     color: #ffffff69 !important;
     text-transform: inherit !important;
 }
@@ -996,13 +1003,13 @@ span.ripple {
 }
 
 .chat-history ul li .link {
-    width: 30%;
+    /*width: 30%;*/
 }
 
 .chat-history ul li .upload-link {
     max-width: 260px;
     display: grid;
-    padding: 5px 15px;
+    padding: 15px;
     width: 70%;
 }
 
@@ -1018,4 +1025,88 @@ span.ripple {
 
 .chat-history ul li .upload-link a {
     display: grid;
+}
+
+.chat-history ul li .uploads-box img {
+    min-width: 100px;
+    max-width: 400px;
+    cursor: pointer;
+}
+
+.text-editor .uploads-box .file {
+    padding: 0;
+}
+
+.text-editor .uploads-box .file img {
+    width: 100%;
+}
+
+.chat-message .textarea .uploads-box {
+    display: none !important;
+}
+
+.image-lighthouse {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    width: 100%;
+    padding: 15px;
+}
+
+.image-void {
+    position: absolute;
+    left: 0;
+    top: 0;
+    background: #000000d3;
+    width: 100%;
+    height: 100%;
+}
+
+.image-box {
+    position: relative;
+    z-index: 1;
+    background: #1f2029;
+    padding: 15px;
+    border-radius: 10px;
+}
+
+.image-box img {
+    width: 100%;
+    position: relative;
+    box-shadow: 0 0 5px black;
+}
+
+.close-image {
+    position: absolute;
+    right: 0;
+    top: 0;
+    transform: rotate(45deg);
+    padding: 30px;
+    color: white;
+    font-size: large;
+    cursor: pointer;
+}
+
+.image-share {
+    position: absolute;
+    bottom: 5px;
+    right: 5px;
+    color: white;
+    font-size: x-large;
+    width: 25px;
+    background: #1f2029;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    z-index: 1;
+    box-shadow: 0 0 5px rgba(0, 0, 0, 0.658);
 }

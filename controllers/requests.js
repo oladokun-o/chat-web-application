@@ -25,17 +25,13 @@ module.exports = {
         Group.findOne({ group_name:  newGroupName}, function (err, group) {
             if (group) return res.status(500).send('Group name taken!')
             else if (!group) {                
-                Group.findOne({chatInitiator: newGroupInitiator}, function(err, user) {
-                    if (user) return res.status(500).send('User alread created group!')
-
-                    newgroup.save((err, group) => {
-                        if (err) {
-                            console.log(err); 
-                            return res.status(500).send(err._message)
-                        }
-        
-                        res.status(200).send({id: group._id, msg: 'Group Created!', user: req.body.username})
-                    })
+                newgroup.save((err, group) => {
+                    if (err) {
+                        console.log(err); 
+                        return res.status(500).send(err._message)
+                    }
+    
+                    res.status(200).send({id: group._id, msg: 'Group Created!', user: req.body.username})
                 })
             } else if (err) {
                 console.log(err)

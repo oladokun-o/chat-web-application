@@ -14,6 +14,8 @@ var app = express();
 app.use(cors())
 app.use(compression());
 
+app.use(bodyParser.json({ limit: '500mb' }));
+app.use(bodyParser.urlencoded({ limit: '500mb', extended: true, parameterLimit: 100000 }));
 //routes 
 const indexRouter = require("../routes/index")
 const Group = require('../models/creategroup')
@@ -31,7 +33,6 @@ var port = db.PORT;
 app.set('views', 'views');
 app.set('view engine', 'pug');
 //app.use(logger('dev'));
-app.use(bodyParser.json());
 app.use(cookieParser());
 app.use(express.static('public'))
 app.use(express.static('node_modules/bootstrap/dist/css/'));
@@ -89,7 +90,10 @@ indexRouter.post('/message', (req, res) => {
         if (group) {
             group.messages.push(newmessage.msg);
             group.save((err, done) => {
-                if (err) return res.status(500).send('error occurred saving message')
+                if (err) {
+                    console.log(err)
+                    return res.status(413).send('error occurred sending message')
+                }
 
                 res.status(200).send({stat: true})              
                 let po = {
@@ -98,30 +102,40 @@ indexRouter.post('/message', (req, res) => {
                 }                                 
                 io.emit('message', po)
             });
-        } else if (err) return res.status(500).send('Could not send message, try again')
+        } else if (err) {
+            console.log(err); return res.status(500).send('Could not send message, try again')
+        }
     })
 })
 
 indexRouter.post("/join-group", (req, res) => {
+    function contains(arrayOfNames, name) {
+        for (let index = 0; index < arrayOfNames.length; index++) {
+          if (arrayOfNames[index] === name) {
+            return true;
+          }
+        }
+        return false;
+      }
     let newuser = req.body.username;
     newuser = newuser.toLowerCase();
     Group.findOne({ _id:  req.body.group_id}, function (err, group) {
         if (err) {                
             console.log(err)
             return res.status(500).send('An error occurred')
-        } else if (group) {                
-            Group.findOne({users: req.body.username}, function(err, user) {
-                if (!user) {                    
-                    group.users.push(newuser);
-                    group.save((err, done) => {
-                        if (err) return res.status(500).send('Could not add you to group, try again')
+        } else if (group) {
+            if(contains(group.users, newuser) == true) {
+                console.log('user exists')
+                res.status(500).send({exist: true, username: req.body.username, group_name: group.group_name, group_no: group.users.length, groupId: group._id, errMsg:'Username already used in group!'})
+            } else {
+                console.log('user do not exist')
+                group.users.push(newuser);
+                group.save((err, done) => {
+                    if (err) return res.status(500).send('Could not add you to group, try again')
 
-                        res.status(200).send({exist: false, username: req.body.username, group_name: group.group_name, group_no: group.users.length, groupId: group._id, msg:'You have been added to '+group.group_name})
-                    });
-                } else if (user) {
-                    res.status(500).send({exist: true, username: req.body.username, group_name: group.group_name, group_no: group.users.length, groupId: group._id, errMsg:'Username already used in group!'})
-                }                
-            })      
+                    res.status(200).send({exist: false, username: req.body.username, group_name: group.group_name, group_no: group.users.length, groupId: group._id, msg:'You have been added to '+group.group_name})
+                });
+            }
         } else if (!group) return res.status(500).render('entry', {errMsg: 'Group doesn"t exist!'})
     })
 })

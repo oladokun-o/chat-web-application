@@ -75,6 +75,7 @@ function cancel(target) {
 }
 
 function copyToClipboard(element) {
+  console.log(element)
   var $temp = $("<input>");
   $("body").append($temp);
   $temp.val($(element).val()).select();
@@ -256,7 +257,7 @@ $('.text-format').on('click', function() {
     $('.text-btns').fadeOut()
     $(this).addClass('active-tool')
   } else {
-    $('.text-btns').fadeIn()
+    $('.text-btns').fadeIn().removeClass('d-none')
     $(this).removeClass('active-tool')
   }
 })

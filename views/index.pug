@@ -2,6 +2,13 @@ extends layout
 
 block content
 	.body.px-0.py-0
+		.image-lighthouse.d-none
+			.image-void(onclick="closeImagePreview()")
+			.close-image(onclick="closeImagePreview()") 
+				i.bi.bi-plus-lg
+			.image-box.col-12.col-md-6
+				//.image-share 
+					i.bi.bi-share-fill
 		.container-fluid.p-0.full-height.position-fixed
 			.row.clearfix.full-height
 				.col-lg-12.pl-2.pr-0
@@ -50,13 +57,13 @@ block content
 							.chat-history.pl-3.pr-4.m-0
 								ul.m-b-0.chats.px-2
 									span#last-item
-							.chat-message.clearfix.p-3.pl-md-2.pr-md-4.py-md-2#chat_message
+							.chat-message.clearfix.px-3.py-4.pl-md-2.pr-md-4.py-md-2#chat_message
 								#data.d-none
 								.text-editor.col-12.px-2.py-0.position-relative
 									.toolbar.text-formatters.px-2.pb-0.pt-2
 										.uploads.d-none
 											.uploads-box
-										.text-btns.col-12.p-0.null.mt-2
+										.text-btns.col-12.p-0.null.mt-2.d-none
 											button.edit-btn(data-action='bold' data-tag-name='b' title='Bold').for-text
 												i.bi.bi-type-bold
 											button.edit-btn.icon.smaller(data-action='italic' data-tag-name='i' title='Italic').for-text
@@ -86,7 +93,7 @@ block content
 											pre#highlighting(aria-hidden='true')
 												code(class="language-html" id="highlighting-content")
 									.col-12.text-edit.position-relative.null
-											input(type="file" id="fileUpload").d-none
+											input(type="file" id="fileUpload" accept=".jpg,.jpeg.,.gif,.png").d-none
 											button(type="button" title="File upload | Ctrl+U").upload.for-text 
 												i.bi.bi-plus
 											span.px-1.text-muted.d-md-inline.d-none |
@@ -94,7 +101,7 @@ block content
 												i.bi.bi-emoji-smile
 											button(type="button" title="Mention someone").at.for-text 
 												i.bi.bi-at
-											button(type="button" title="Toggle Formatting").d-inline.text-format.for-text
+											button(type="button" title="Toggle Formatting").d-inline.text-format.for-text.active-tool
 												i.bi.bi-type
 											button.null.submit.active.float-right(type="submit" title="Send").position-absolute
 												div

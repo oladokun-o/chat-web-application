@@ -66,9 +66,9 @@ block content
 									.col-12.read.d-none.px-0
 										.input-group.mb-4
 											input.form-control#groupCode.text-center(type='text', name="group_code", aria-label='group_code', aria-describedby='basic-addon5' readonly)
-											span#basic-addon5.input-group-text.clone(onclick="copyToClipboard('#group_code')") 
+											span#basic-addon5.input-group-text.clone(onclick="copyToClipboard('#groupCode')" title="share code to other users to join") 
 												small 
-													| Share code
+													| Copy code
 													i.fa.fa-clone.pl-2
 										.col-12.px-0
 											button(type="button" onclick="enterGroup(this)").enter-btn 

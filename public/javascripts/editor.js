@@ -305,13 +305,23 @@ function cancelFile(elem) {
 $('input[type="file"]').on('change', function(e) {
   let file = e.target.files[0].name,fil = document.createElement('span'),cancelFile = document.createElement('button');
   //file = file.split('.').slice(0, -1).join('.');
+  var fileReader = new FileReader();
+  var File = e.target.files[0]
+  if (File.type.match('image')) {
+    fileReader.onload = function() {
+      var img = document.createElement('img');
+      img.src = fileReader.result;
+      fil.append(img)
+    };
+    fileReader.readAsDataURL(File);
+  }
   cancelFile.innerHTML = '<i class="bi bi-x"></i>';
   let fileId = ID()
   cancelFile.setAttribute('for', fileId);
   fil.classList.add('text-truncate', 'd-inline-block', 'file')
   cancelFile.setAttribute('onclick', 'cancelFile(this)');
   fil.setAttribute('id', fileId)
-  fil.append(file);
+  //fil.append(file);
   fil.append(cancelFile);  
   fade_in('.uploads')
 
@@ -379,3 +389,17 @@ $('body').on('click', function(e) {
   fade_out('.chat-options');
   fade_out('#con');$('.emoji').removeClass('active-tool')
 })
+
+function previewImage(data) {
+  var image = data.target, 
+  img = $('<img />');
+  
+  img.attr('src', image.getAttribute('src'))
+  $('.image-lighthouse').find('.image-box').append(img)
+  fade_in('.image-lighthouse');
+}
+
+function closeImagePreview() {  
+  fade_out('.image-lighthouse');
+  $('.image-lighthouse').find('img').remove()
+}
