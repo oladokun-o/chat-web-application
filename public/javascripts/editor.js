@@ -403,3 +403,7 @@ function closeImagePreview() {
   fade_out('.image-lighthouse');
   $('.image-lighthouse').find('img').remove()
 }
+
+function exitChat() {
+  window.location = '/'
+}

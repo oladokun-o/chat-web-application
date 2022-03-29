@@ -632,7 +632,7 @@ button {
         display: none
     }
     .chat-options {
-        right: 0;
+        right: 0 !important;
         margin: 15px;
     }
     .chat-app .people-list.open {
